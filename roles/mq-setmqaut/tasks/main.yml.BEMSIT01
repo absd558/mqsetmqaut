@@ -1,0 +1,34 @@
+---
+# tasks to grant svc-snowmqm user access to MQ
+- name: Display queue manager
+  shell:
+    cmd: dspmq
+  args:
+    chdir: /apps/wmq/9.1/bin
+  become_user: "mqm"
+
+- name: setmqauth
+  shell: 
+    cmd: setmqaut -m BEMSIT01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt
+  args:
+    chdir: /apps/wmq/9.1/bin
+  become_user: "mqm"
+
+- name: setmqauth
+  shell:
+    cmd: setmqaut -m BEMSIT01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq 
+  args:
+    chdir: /apps/wmq/9.1/bin
+  become_user: "mqm"
+  
+- name: dspmqauth
+  shell:
+    cmd: dspmqaut -m BEMSIT01 -t qmgr -p svc-snowmqm
+  args:
+    chdir: /apps/wmq/9.1/bin
+  become_user: "mqm"
+  
+ 
+
+
+
