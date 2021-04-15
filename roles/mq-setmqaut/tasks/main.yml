@@ -1,38 +1,18 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
 - name: Display queue manager
-  shell:
-    cmd: dspmq
-  args:
-    chdir: /apps/wmq/9.1/bin
+  command: '{{ MQ.command_path }}/dspmq'
   become: yes
-  become_user: "mqm"
-
+  become_user: '{{ MQ.user }}'
 - name: setmqauth
-  shell: 
-    cmd: setmqaut -m BEMPRD01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt
-  args:
-    chdir: /apps/wmq/9.1/bin
+  command: '{{ MQ.command_path }}/setmqaut -m BEMPRD01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
-  become_user: "mqm"
-
+  become_user: '{{ MQ.user }}'
 - name: setmqauth
-  shell:
-    cmd: setmqaut -m BEMPRD01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq 
-  args:
-    chdir: /apps/wmq/9.1/bin
+  command: "{{ MQ.command_path }}/setmqaut -m BEMPRD01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
-  become_user: "mqm"
-  
+  become_user: '{{ MQ.user }}'
 - name: dspmqauth
-  shell:
-    cmd: dspmqaut -m BEMPRD01 -t qmgr -p svc-snowmqm
-  args:
-    chdir: /apps/wmq/9.1/bin
+  command: "{{ MQ.command_path }}/dspmqaut -m BEMPRD01 -t qmgr -p svc-snowmqm"
   become: yes
-  become_user: "mqm"
-  
- 
-
-
-
+  become_user: '{{ MQ.user }}'

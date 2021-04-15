@@ -1,5 +1,5 @@
 ---
-# defaults file for CreateQueues
+# defaults file for setting mqaut
 MQ:
   user: mqm
   group: mqm
