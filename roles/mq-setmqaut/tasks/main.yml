@@ -4,47 +4,47 @@
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000153.corp.dsarena.com"
 
 - name: setmqauth
   command: '{{ MQ.command_path }}/setmqaut -m BEMDR01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000153.corp.dsarena.com"
 
 - name: setmqauth
   command: "{{ MQ.command_path }}/setmqaut -m BEMDR01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000153.corp.dsarena.com"
 
 - name: dspmqauth
   command: "{{ MQ.command_path }}/dspmqaut -m BEMDR01 -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000153.corp.dsarena.com"
 
 - name: Display queue manager on jgocsr000000154
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000154"
+  when: ansible_hostname == "jgocsr000000154.corp.dsarena.com"
 
 - name: setmqauth
   command: '{{ MQ.command_path }}/setmqaut -m BEMDR02 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000154"
+  when: ansible_hostname == "jgocsr000000154.corp.dsarena.com"
 
 - name: setmqauth
   command: "{{ MQ.command_path }}/setmqaut -m BEMDR02 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000154"
+  when: ansible_hostname == "jgocsr000000154.corp.dsarena.com"
 
 - name: dspmqauth
   command: "{{ MQ.command_path }}/dspmqaut -m BEMDR02 -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000154"
+  when: ansible_hostname == "jgocsr000000154.corp.dsarena.com"
 
