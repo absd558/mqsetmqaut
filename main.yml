@@ -2,7 +2,7 @@
 - name: mq-setmqaut
   hosts: all
   gather_facts: false
-  strategy: free
+#  strategy: free
   become: true
   roles:
     - { role: mq-setmqaut }
