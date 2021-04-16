@@ -1,99 +1,41 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
-- name: Display queue manager on jgocsr000000153
-  command: '{{ MQ.command_path }}/dspmq'
+# BEMDR03
+- name: setmqauth BEMDR03
+  command: '{{ MQ.command_path }}/setmqaut -m BEMDR03 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000155"
 
-- name: setmqauth
-  command: '{{ MQ.command_path }}/setmqaut -m BOCDR01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+- name: setmqauth BEMDR03
+  command: "{{ MQ.command_path }}/setmqaut -m BEMDR03 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000155"
 
-- name: setmqauth
-  command: "{{ MQ.command_path }}/setmqaut -m BOCDR01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+- name: dspmqauth BEMDR03
+  command: "{{ MQ.command_path }}/dspmqaut -m BEMDR03 -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000155"
 
-- name: dspmqauth
-  command: "{{ MQ.command_path }}/dspmqaut -m BOCDR01 -t qmgr -p svc-snowmqm"
+#BEMDR04
+- name: setmqauth BEMDR04
+  command: '{{ MQ.command_path }}/setmqaut -m BEMDR04 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000156"
 
-#BNEDR01
-
-- name: setmqauth
-  command: '{{ MQ.command_path }}/setmqaut -m BNEDR01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+- name: setmqauth BEMDR04
+  command: "{{ MQ.command_path }}/setmqaut -m BEMDR04 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
+  when: ansible_hostname == "jgocsr000000156"
 
-- name: setmqauth
-  command: "{{ MQ.command_path }}/setmqaut -m BNEDR01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+- name: dspmqauth BEMDR04
+  command: "{{ MQ.command_path }}/dspmqaut -m BEMDR04 -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
-
-- name: dspmqauth
-  command: "{{ MQ.command_path }}/dspmqaut -m BNEDR01 -t qmgr -p svc-snowmqm"
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000153"
-
-- name: Display queue manager on jgocsr000000154
-  command: '{{ MQ.command_path }}/dspmq'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgocsr000000154"
-
-#PROD01 BOCPRD01
-
-- name: Display queue manager on jgopsr000000254
-  command: '{{ MQ.command_path }}/dspmq'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-- name: setmqauth
-  command: '{{ MQ.command_path }}/setmqaut -m BOCPRD01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-- name: setmqauth
-  command: "{{ MQ.command_path }}/setmqaut -m BOCPRD01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-- name: dspmqauth
-  command: "{{ MQ.command_path }}/dspmqaut -m BOCPRD01 -t qmgr -p svc-snowmqm"
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-#PROD01 BNEPRD01
-
-- name: setmqauth
-  command: '{{ MQ.command_path }}/setmqaut -m BNEPRD01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-- name: setmqauth
-  command: "{{ MQ.command_path }}/setmqaut -m BNEPRD01 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
-
-- name: dspmqauth
-  command: "{{ MQ.command_path }}/dspmqaut -m BNEPRD01 -t qmgr -p svc-snowmqm"
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jgopsr000000254"
+  when: ansible_hostname == "jgocsr000000156"
 
 
