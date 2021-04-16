@@ -6,7 +6,7 @@
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "ZAPRNBRAPP0039"
 
-# BEMDR03
+#MQMBPROD01
 - name: setmqauth MQMBPROD01 on ZAPRNBRAPP0039
   command: '{{ MQ.command_path }}/setmqaut -m MQMBPROD01 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
@@ -25,7 +25,7 @@
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "ZAPRNBRAPP0039"
 
-#BEMDR04
+#MQMBPROD02.......................................................
 - name: setmqauth MQMBPROD02
   command: '{{ MQ.command_path }}/setmqaut -m MQMBPROD02 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
@@ -44,5 +44,42 @@
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "ZAPRNBRAPP0040"
 
+#MQMBPROD03.......................................................
+- name: setmqauth MQMBPROD03
+  command: '{{ MQ.command_path }}/setmqaut -m MQMBPROD03 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1659"
+
+- name: setmqauth MQMBPROD03
+  command: "{{ MQ.command_path }}/setmqaut -m MQMBPROD03 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1659"
+
+- name: dspmqauth MQMBPROD03
+  command: "{{ MQ.command_path }}/dspmqaut -m MQMBPROD03 -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1659"
+
+#MQMBPROD04......................................................
+- name: setmqauth MQMBPROD04
+  command: '{{ MQ.command_path }}/setmqaut -m MQMBPROD04 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1660"
+
+- name: setmqauth MQMBPROD04
+  command: "{{ MQ.command_path }}/setmqaut -m MQMBPROD04 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1660"
+
+- name: dspmqauth MQMBPROD03
+  command: "{{ MQ.command_path }}/dspmqaut -m MQMBPROD04 -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAPSDCRAPP1660"
 
 
