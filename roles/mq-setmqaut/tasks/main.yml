@@ -96,3 +96,43 @@
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "jgopsr000000254"
 
+#BEMDR03
+
+- name: setmqauth
+  command: '{{ MQ.command_path }}/setmqaut -m BEMDR03 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000155"
+
+- name: setmqauth
+  command: "{{ MQ.command_path }}/setmqaut -m BEMDR03 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000155"
+
+- name: dspmqauth
+  command: "{{ MQ.command_path }}/dspmqaut -m BEMDR03 -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000155"
+
+#BEMDR04
+
+- name: setmqauth
+  command: '{{ MQ.command_path }}/setmqaut -m BEMDR04 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000156"
+
+- name: setmqauth
+  command: "{{ MQ.command_path }}/setmqaut -m BEMDR04 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000156"
+
+- name: dspmqauth
+  command: "{{ MQ.command_path }}/dspmqaut -m BEMDR04 -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jgocsr000000156"
+
