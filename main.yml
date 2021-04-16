@@ -1,7 +1,7 @@
 ---
 - name: mq-setmqaut
   hosts: all
-  gather_facts: false
+  gather_facts: true
 #  strategy: free
   become: true
   roles:
