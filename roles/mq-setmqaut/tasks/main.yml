@@ -26,23 +26,23 @@
   when: ansible_hostname == "zapsdcrapp1132"
 
 #EBOXPRD02AQMGR.......................................................
-- name: setmqauth EBOXPRD02AQMGR
-  command: '{{ MQ.command_path }}/setmqaut -m EBOXPRD02AQMGR -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "ZAPSDCRAPP1133"
+#- name: setmqauth EBOXPRD02AQMGR
+#  command: '{{ MQ.command_path }}/setmqaut -m EBOXPRD02AQMGR -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+#  become: yes
+#  become_user: '{{ MQ.user }}'
+#  when: ansible_hostname == "ZAPSDCRAPP1133"
 
-- name: setmqauth EBOXPRD02AQMGR
-  command: "{{ MQ.command_path }}/setmqaut -m EBOXPRD02AQMGR -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "ZAPSDCRAPP1133"
+    #- name: setmqauth EBOXPRD02AQMGR
+    #  command: "{{ MQ.command_path }}/setmqaut -m EBOXPRD02AQMGR -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+    #  become: yes
+    #become_user: '{{ MQ.user }}'
+    #when: ansible_hostname == "ZAPSDCRAPP1133"
 
-- name: dspmqauth EBOXPRD02AQMGR
-  command: "{{ MQ.command_path }}/dspmqaut -m EBOXPRD02AQMGR -t qmgr -p svc-snowmqm"
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "ZAPSDCRAPP1133"
+    #- name: dspmqauth EBOXPRD02AQMGR
+    #command: "{{ MQ.command_path }}/dspmqaut -m EBOXPRD02AQMGR -t qmgr -p svc-snowmqm"
+    #become: yes
+    #become_user: '{{ MQ.user }}'
+    #when: ansible_hostname == "ZAPSDCRAPP1133"
 
 #EBOXPRD03AQMGR.......................................................
 - name: setmqauth EBOXPRD03AQMGR
