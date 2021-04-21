@@ -1,26 +1,28 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
-- name: Display MQAPPLCLNP
+- name: Display PPCLSPRD00AQMGR
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "rmqfap.absa.co.za"
+  when: ansible_hostname == "jhbpcr000006n02"
 
 #SAAPRD01AQMGR....................................................
-- name: setmqauth MQAPPLCLNP
-  command: '{{ MQ.command_path }}/setmqaut -m MQAPPLCLNP -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+- name: setmqauth PPCLSPRD00AQMGR
+  command: '{{ MQ.command_path }}/setmqaut -m PPCLSPRD00AQMGR -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "rmqfap.absa.co.za"
+  when: ansible_hostname == "jhbpcr000006n02"
 
-- name: setmqauth MQAPPLCLNP
-  command: "{{ MQ.command_path }}/setmqaut -m MQAPPLCLNP -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+- name: setmqauth PPCLSPRD00AQMGR
+  command: "{{ MQ.command_path }}/setmqaut -m PPCLSPRD00AQMGR -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "rmqfap.absa.co.za"
+  when: ansible_hostname == "jhbpcr000006n02"
 
-- name: dspmqauth MQAPPLCLNP
-  command: "{{ MQ.command_path }}/dspmqaut -m MQAPPLCLNP -t qmgr -p svc-snowmqm"
+- name: dspmqauth PPCLSPRD00AQMGR
+  command: "{{ MQ.command_path }}/dspmqaut -m PPCLSPRD00AQMGR -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "rmqfap.absa.co.za"
+  when: ansible_hostname == "jhbpcr000006n02"
+
+
