@@ -3,4 +3,4 @@
 MQ:
   user: mqm
   group: mqm
-  command_path: /opt/mqm/bin
+  command_path: /usr/mqm/bin
