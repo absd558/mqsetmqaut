@@ -1,45 +1,27 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
-- name: Display EBOXTZPRD01AQMGR
+- name: Display MQLQ37L0
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "TZPTZARAPP0001"
+  when: ansible_hostname == "jhbpsr000000818"
 
-#EBOXTZPRD01AQMGR....................................................
-- name: setmqauth EBOXTZPRD01AQMGR
-  command: '{{ MQ.command_path }}/setmqaut -m EBOXTZPRD01AQMGR -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+#MQLQ37L0....................................................
+- name: setmqauth MQLQ37L0
+  command: '{{ MQ.command_path }}/setmqaut -m MQLQ37L0 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "TZPTZARAPP0001"
+  when: ansible_hostname == "jhbpsr000000818"
 
-- name: setmqauth EBOXTZPRD01AQMGR
-  command: "{{ MQ.command_path }}/setmqaut -m EBOXTZPRD01AQMGR -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+- name: setmqauth MQLQ37L0
+  command: "{{ MQ.command_path }}/setmqaut -m MQLQ37L0 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "TZPTZARAPP0001"
+  when: ansible_hostname == "jhbpsr000000818"
 
-- name: dspmqauth EBOXTZPRD01AQMGR
-  command: "{{ MQ.command_path }}/dspmqaut -m EBOXTZPRD01AQMGR -t qmgr -p svc-snowmqm"
+- name: dspmqauth MQLQ37L0
+  command: "{{ MQ.command_path }}/dspmqaut -m MQLQ37L0 -t qmgr -p svc-snowmqm"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "TZPTZARAPP0001"
+  when: ansible_hostname == "jhbpsr000000818"
   
-#MQLA00L4....................................................
-- name: setmqauth MQLA00L4
-  command: '{{ MQ.command_path }}/setmqaut -m MQLA00L4 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "tznbcrappmq01"
-
-- name: setmqauth MQLA00L4
-  command: "{{ MQ.command_path }}/setmqaut -m MQLA00L4 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "tznbcrappmq01"
-
-- name: dspmqauth MQLA00L4
-  command: "{{ MQ.command_path }}/dspmqaut -m MQLA00L4 -t qmgr -p svc-snowmqm"
-  become: yes
-  become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "tznbcrappmq01"
