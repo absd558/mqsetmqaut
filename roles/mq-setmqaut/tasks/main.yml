@@ -6,7 +6,7 @@
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "TZPTZARAPP0001"
 
-#PPCLSPRD00AQMGR....................................................
+#EBOXTZPRD01AQMGR....................................................
 - name: setmqauth EBOXTZPRD01AQMGR
   command: '{{ MQ.command_path }}/setmqaut -m EBOXTZPRD01AQMGR -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
   become: yes
@@ -24,3 +24,22 @@
   become: yes
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "TZPTZARAPP0001"
+  
+#MQLA00L4....................................................
+- name: setmqauth MQLA00L4
+  command: '{{ MQ.command_path }}/setmqaut -m MQLA00L4 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "tznbcrappmq01"
+
+- name: setmqauth MQLA00L4
+  command: "{{ MQ.command_path }}/setmqaut -m MQLA00L4 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "tznbcrappmq01"
+
+- name: dspmqauth MQLA00L4
+  command: "{{ MQ.command_path }}/dspmqaut -m MQLA00L4 -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "tznbcrappmq01"
