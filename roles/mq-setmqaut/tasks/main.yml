@@ -14,7 +14,7 @@
   when: ansible_hostname == "jhbpcr02010n01"
 
 - name: setmqauth FALCONSAPROD
-  command: "{{ MQ.command_path }}/setmqaut -m FALCONSAPROD -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  command: "{{ MQ.command_path }}/setmqaut -m FALCONSAPROD -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq"
   become: yes
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "jhbpcr02010n01"
