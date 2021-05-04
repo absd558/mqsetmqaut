@@ -1,16 +1,27 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
-- name: Display PPCLSPRD00AQMGR
+- name: Display FALCONSAPROD
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jhbpcr000006n01"
+  when: ansible_hostname == "jhbpcr02010n01"
 
-#PPCLSPRD00AQMGR....................................................
-- name: addmqinf PPCLSPRD00AQMGR
-  command: '{{ MQ.command_path }}/addmqinf -s QueueManager -v Name=PPCLSPRD00AQMGR -v Directory=PPCLSPRD00AQMGR -v Prefix=/var/mqm -v DataPath=/MQHA/PPCLSPRD00AQMGR/data/PPCLSPRD00AQMGR'
+#FALCONSAPROD....................................................
+- name: setmqauth FALCONSAPROD
+  command: "{{ MQ.command_path }}/setmqaut -m FALCONSAPROD -t qmgr -g svc-snowmqm +connect +dsp +inq +crt"
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "jhbpcr000006n01"
+  when: ansible_hostname == "jhbpcr02010n01"
 
+- name: setmqauth FALCONSAPROD
+  command: "{{ MQ.command_path }}/setmqaut -m FALCONSAPROD -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jhbpcr02010n01"
+
+- name: dspmqauth FALCONSAPROD
+  command: "{{ MQ.command_path }}/dspmqaut -m FALCONSAPROD -t qmgr -p svc-snowmqm"
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "jhbpcr02010n01"
 
