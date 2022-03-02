@@ -4,15 +4,4 @@
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-#- name: setmqauth
- # command: '{{ MQ.command_path }}/setmqaut -m BEMPRD04 -t qmgr -g svc-snowmqm +connect +dsp +inq +crt'
-  #become: yes
-  #become_user: '{{ MQ.user }}'
-#- name: setmqauth
- # command: "{{ MQ.command_path }}/setmqaut -m BEMPRD04 -n '**' -t q -g svc-snowmqm +get +browse +put +dsp +inq "
-  #become: yes
-  #become_user: '{{ MQ.user }}'
-#- name: dspmqauth
- # command: "{{ MQ.command_path }}/dspmqaut -m BEMPRD04 -t qmgr -p svc-snowmqm"
-  #become: yes
-  #become_user: '{{ MQ.user }}'
+
