@@ -1,7 +1,7 @@
 ---
 # tasks to grant svc-snowmqm user access to MQ
-- name: Display queue manager on ZAPRNBRAPP0039
+- name: Display queue manager on ZAURNBRAPP002F
   command: '{{ MQ.command_path }}/dspmq'
   become: yes
   become_user: '{{ MQ.user }}'
-  when: ansible_hostname == "ZAPRNBRAPP0039"
+  when: ansible_hostname == "ZAURNBRAPP002F"
