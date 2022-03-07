@@ -5,3 +5,10 @@
   become: yes
   become_user: '{{ MQ.user }}'
   when: ansible_hostname == "ZAURNBRAPP002F"
+  
+  #MQMBPROD01
+- name: Backup MQMBSIT01 on ZAURNBRAPP002F
+  command: '{{ MQ.command_path }}/dmpmqcfg -m MQMBSIT01 -a -t all -x all > /tmp/MQMBSIT01.mqsc'
+  become: yes
+  become_user: '{{ MQ.user }}'
+  when: ansible_hostname == "ZAURNBRAPP002F"
