@@ -3,4 +3,4 @@
 MQ:
   user: mqm
   group: mqm
-  command_path: /apps/wmq/9.1/bin
+  command_path: /apps/wmq/9.2/bin
